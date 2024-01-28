@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+rm -rv *.json
+rm -rv 0 0.org constant system post*
+rm -v log*
+rm *fms inlet.stl outlet* wall* final_final_*
+foamListTimes -rm
