@@ -1,0 +1,120 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          |
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         |
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+////////////////////////////////
+//Names are hard coded for now//
+////////////////////////////////
+// cfMesh Temp. For Fine Mesh Simulation
+
+//File Name to fetched from STL name
+surfaceFile "XYZ"; 
+
+//minCellSize: is a global option which activates automatic refinement of the
+//mesh template
+minCellSize 0.09; //  >> = Biggest Diameter * 0.0125  (Biggest Dimaeter can be fetched from inlet or outlet Dimeter
+
+//maxCellSize: represent the default cell size used for the meshing job. It is the maximum cell size
+//generated in the domain
+maxCellSize 0.15; //  >> = Biggest Diameter * 0.25  (Biggest Dimaeter can be fetched from inlet or outlet Dimeter
+
+// not needed for now 
+//boundaryCellSize:  refinement of cells at the boundary. It is a global option and the requested cell size is applied everywhere at the boundary. 
+//boundaryCellSize 0.0001;   // >> = Biggest Diameter * 0.15  (Biggest Dimaeter can be fetched from inlet or outlet Dimeter
+//boundaryCellSizeRefinementThickness 0.1;
+
+/*
+// not needed for now 
+localRefinement
+{
+    "walls" // main walls name (must be added by user
+    {
+       cellSize 0.0005;
+    }
+
+}
+*/
+
+
+// boundaryLayers thickness is controlled by the cell size
+//specified at the boundary and the mesher tends to produce layers of similar thickness to the cell size
+// maxFirstLayerThickness must be at least 2X Bigger than Y+
+// function of the Y+
+// first hight = (y+ X nu) / (u* X V)
+// for now we can keep it as constant value 2XminCellSize
+boundaryLayers
+{
+     patchBoundaryLayers
+    {
+        auto0 
+        {
+            nLayers           5;
+            thicknessRatio    1.3;
+            maxFirstLayerThickness 0.1;  // [m] // 
+            allowDiscontinuity 0;
+        }
+    }
+
+    optimiseLayer 1;
+
+    optimisationParameters
+    {
+        nSmoothNormals 4;
+        maxNumIterations 4;
+        featureSizeFactor 0.4;
+        reCalculateNormals 2;
+        relThicknessTol 0.1;
+    }
+}
+
+meshQualitySettings
+{
+    maxNonOrthogonality 80;
+
+    //minTetQuality       1e-10;
+}
+
+
+renameBoundary
+{
+    newPatchNames
+    {
+        "auto0"
+        {
+            type    wall;
+            newName walls;
+        }        
+        "auto3"
+        {
+            type    patch;
+            newName inlet;
+        }
+
+        "auto1"
+        {
+            type    patch;
+            newName outlet1;
+        }
+        "auto2"
+        {
+            type    patch;
+            newName outlet2;
+        }        
+    }
+}
+
+
+// ************************************************************************* //

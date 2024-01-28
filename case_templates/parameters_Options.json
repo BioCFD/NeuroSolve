@@ -1,0 +1,43 @@
+{
+    "Case":
+    {
+        "type": "NeuroCase"
+    },
+    "solver":
+    {
+        "type": "Unsteady", or "Steady"
+        "n_cycles" : 10,
+        "period" : 0.83
+    },
+    "mesh":
+    {
+        "type": "cfMesh",
+        "n_minCellSize": 30,
+        "n_maxCellSize": 20
+    },
+    "geometry":
+    {
+        "all": "case17_stenosis_R.stl",
+        "n_patches": 5,
+        "feature_angle": 35.0
+    },
+    "inletBC":
+    {
+        "U":
+        {
+            "type": "Profile", 
+            "value": "constant/inlet_p1634.csv"
+        }
+    },
+    "turbulenceModel":
+    {
+        "type": "RANS"
+    },
+    "viscosityModel":
+    {
+        "type":"NonNewtonian",
+        "nu": 0.00000377358,
+        "name": "CrossPowerLaw"
+    },
+    "nproc": 2
+}

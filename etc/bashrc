@@ -1,0 +1,6 @@
+export BIO_CFD="$( cd "$( dirname $( dirname "${BASH_SOURCE[0]}" ))" >/dev/null 2>&1 && pwd )"
+echo "BIO_CFD = $BIO_CFD"
+export BIOCFD_TEMP=$BIO_CFD/case_templates
+export PYTHONPATH=$BIO_CFD:$PYTHONPATH
+export PATH=$BIO_CFD/bioCFD/bin:$PATH
+#alias mpirun='mpirun --use-hwthread-cpus'

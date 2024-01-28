@@ -1,0 +1,46 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  v2012
+    \\  /    A nd           | Website:  www.openfoam.com
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates specified kratio
+
+\*---------------------------------------------------------------------------*/
+
+type coded;
+libs (utilityFunctionObjects);
+
+// Name of on-the-fly generated functionObject
+name kratio;
+codeWrite
+#{
+    // Lookup U
+    const volScalarField& km = 
+        mesh().lookupObject<volScalarField>("k");
+    const volSymmTensorField& UPrime2Mean = 
+        mesh().lookupObject<volSymmTensorField>("UPrime2Mean");
+
+    const volScalarField& Rxx = UPrime2Mean.component(symmTensor::XX);
+    const volScalarField& Ryy = UPrime2Mean.component(symmTensor::YY);
+    const volScalarField& Rzz = UPrime2Mean.component(symmTensor::ZZ);
+
+    volScalarField kres = 0.5*(Rxx + Ryy + Rzz);
+    volScalarField kratio
+        (
+            IOobject
+            (
+                "kratio",
+                mesh().time().timeName(),
+                mesh()
+            ),
+            kres/(kres + km)
+        );
+
+    kratio().write();
+#};
+
+
+// ************************************************************************* //

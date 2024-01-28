@@ -1,0 +1,25 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  v2012
+    \\  /    A nd           | Website:  www.openfoam.com
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates specified turbulence fields and stores it on the database.
+
+\*---------------------------------------------------------------------------*/
+
+turbulenceFields
+{
+type            turbulenceFields;
+libs            (fieldFunctionObjects);
+writeToFile     true;
+
+fields          (I L k);
+log             true;
+
+executeControl  writeTime;
+writeControl    writeTime;
+}
+// ************************************************************************* //

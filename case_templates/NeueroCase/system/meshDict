@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2012                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    location        "system";
+    object          meshDict;
+}
+
+surfaceFile     final_case1_CASE_L.fms;
+
+minCellSize     0.12051091352;
+
+maxCellSize     0.18076637028;
+
+boundaryLayers
+{
+    patchBoundaryLayers
+    {
+        wall
+        {
+            nLayers         5;
+            thicknessRatio  1.3;
+            maxFirstLayerThickness 0.1;
+            allowDiscontinuity 0;
+        }
+    }
+    optimiseLayer   1;
+    optimisationParameters
+    {
+        nSmoothNormals  4;
+        maxNumIterations 4;
+        featureSizeFactor 0.4;
+        reCalculateNormals 2;
+        relThicknessTol 0.1;
+    }
+}
+
+meshQualitySettings
+{
+    maxNonOrthogonality 80;
+}
+
+renameBoundary
+{
+    newPatchNames
+    {
+        "wall"
+        {
+            type            wall;
+            newName         wall;
+        }
+        "inlet"
+        {
+            type            patch;
+            newName         inlet;
+        }
+        "outlet1"
+        {
+            type            patch;
+            newName         outlet1;
+        }
+        "outlet2"
+        {
+            type            patch;
+            newName         outlet2;
+        }        
+    }
+}
+
+
+// ************************************************************************* //

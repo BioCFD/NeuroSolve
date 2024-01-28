@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python $BIO_CFD/bioCFD/applications/runNeuroCFD.py "$@"

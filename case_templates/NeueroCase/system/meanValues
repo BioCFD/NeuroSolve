@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2012                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+	mean_values
+	{
+		type fieldAverage;
+		//functionObjectLibs ( "libfieldFunctionObjects.so" );
+       	libs                ("fieldFunctionObjects");
+        timeStart       1;
+        timeEnd         1000;   
+		writeControl writeTime;
+		writeInterval -1;
+		enabled true;
+		log true;
+		restartOnRestart false;
+		restartOnOutput false;
+		periodicRestart false;
+		restartPeriod 0.;
+		fields
+		(
+            wallShearStress
+            {
+                mean            on;
+                prime2Mean      on;
+                base            time;
+				windowType   approximate;
+                window       0.1;
+				allowRestart true;
+            }			
+			p
+			{
+				mean		on;
+				prime2Mean	on;
+				base		time;
+				windowType   approximate;                
+				window       0.1;
+				allowRestart true;
+			}
+			U
+			{
+				mean		on;
+				prime2Mean	on;
+				base		time;
+				windowType   approximate;                
+				window       0.1;
+				allowRestart true;
+			}
+			nu
+			{
+				mean		on;
+				prime2Mean	on;
+				base		time;
+				windowType   approximate;                
+				window       0.1;
+				allowRestart true;
+			}       
+			k
+			{
+				mean		on;
+				prime2Mean	on;
+				base		time;
+				windowType   approximate;                
+				window       0.1;
+				allowRestart true;
+			} 			
+		);
+	}
+
+
+// ************************************************************************* //
