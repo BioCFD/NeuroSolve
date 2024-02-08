@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+rm -r 0* system constant post* pro*
+rm -rf final_* outlet* inlet* wall* log*
+
+
+
+
+
+
