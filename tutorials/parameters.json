@@ -1,0 +1,24 @@
+{
+    "meshing":
+    {
+        "type": "cfMesh",
+        "edge_level": 3,
+        "min_level": 2,
+        "nSurfaceLayers": 3, 
+        "nCell_smallest_delta": 20,
+        "yPlus": 40
+    },
+    "geometry":
+    {
+        "all": "case17_stenosis_R.stl"
+    },
+    "OperatingConditions":
+    {
+        "Uinlet" : -0.3,
+        "rho" : 1.0,
+        "nu" : 1.5E-5,
+        "TI": 0.05,
+        "L": 0.1
+    },
+    "nproc": 4
+}
