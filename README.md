@@ -33,3 +33,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 4.	Modifications to the original Software must be clearly indicated, and strongly recommended to done as forks on Github, and the original copyright notice shall not be removed from any copies or substantial portions of the Software.
 All users must accept these conditions to use this software and its documentation.
 
+# How to cite this software and documentation
+
+Abou-Khedr, M., Kassem, H., Saqr, K. (2023) NeuroSolve: The open-source CFD protocol for neurovascular medicine, Bio-CFD Foundation [Include Github URL]
