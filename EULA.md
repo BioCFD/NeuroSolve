@@ -7,7 +7,7 @@ NeuroCFD™ is a Computational Fluid Dynamics (CFD) technology protocol created 
 Based on high-fidelity Large Eddy Simulation (LES) and non-Newtonian blood viscosity models , NeuroCFD™ offers unprecedented insights to neurovascular interventionalists. By creating accurate hemodynamic digital twin for patients with neurovascular disorders, neurovascular interventionalists can reduce management risk and improve patient outcomes. 
 The value offering and promise of NeuroCFD™ are all about democratizing CFD and translating it to the medical community. With zero-prerequisite knowledge of CFD and fluid mechanics, neurovascular surgeons and radiologists can now capture the value of medical simulation and make better decisions. 
 
-**NeuroSolve is the open-source implementation of NeuroCFD™?**
+**NeuroSolve is the open-source implementation of NeuroCFD™**
 
 In August 2023, Bio-CFD Inc (DE USA) has authorized a resolution to become Bio-CFD Foundation (non-profit, London UK), releasing NeuroCFD™ to the global community under open-source license. This decision was made by 100% of the Bio-CFD Inc shareholders, in response to the medical-technology challenges imposed by the COVID-19 pandemic and in contribution to the global open-science movement. To ensure the rapid adoption, scalability, and sustainability of NeuroCFD™ technology protocol, an open-source implementation was developed based on the open-source general-CFD framework OpenFOAM® . The NeuroSolve code is released on GitHub and is made available worldwide free of charge. NeuroSolve is based on NeuroCFD™ v2.7 authorized on 19 August 2022. The Bio-CFD Foundation will continue to hold all versions of the NeuroCFD™ protocol released after v2.7 as private assets of the foundation.
 
